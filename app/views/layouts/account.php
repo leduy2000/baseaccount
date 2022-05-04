@@ -27,14 +27,14 @@ $user = $data['users'][$_SESSION['user_id']];
         <?php require_once "../app/views/" . $data['page'] . ".php"; ?>
         <div class="menu">
             <div>
-                <div class="name"><?php echo $user['full_name'] ?></div>
+                <div class="name"><?php echo $user['last_name'] . ' ' . $user['first_name'] ?></div>
                 <div class="infor"><?php echo '@' . $user['username'] . ' · ' . $user['email'] ?></div>
             </div>
             <div class="title">ACCOUNT INFORMATION</div>
             <div class="box">
                 <ul>
                     <li><a class="active">Account overview</a></li>
-                    <li><button id="myBtn">Edit account</button></li>
+                    <li><button onclick="btn_edit_account_click()">Edit account</button></li>
                     <li><button>Edit language</button></li>
                     <li><button>Edit password</button></li>
                     <li><button>Edit theme color</button></li>
@@ -59,22 +59,22 @@ $user = $data['users'][$_SESSION['user_id']];
     </div>
 
     <!-- The Modal -->
-    <div id="myModal" class="modal">
+    <div id="edit_modal" class="modal">
 
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
             <div> EDIT PERSONAL PROFILE </div>
             <div> Your first name </div>
-            <div><input type="text" name="firstname"></div>
+            <div><input type="text" name="firstname" value="<?php echo $user['first_name'] ?>"></div>
             <div> Your last name </div>
-            <div><input type="text" name="lastname"></div>
+            <div><input type="text" name="lastname" value="<?php echo $user['last_name'] ?>"></div>
             <div> Email </div>
-            <div><input type="text" name="email" value=<?php echo $user['email'] ?> disabled></div>
+            <div><input type="text" name="email" value="<?php echo $user['email'] ?>" disabled></div>
             <div> Username </div>
-            <div><input type="text" name="username" value=<?php echo '@' . $user['username'] ?> disabled></div>
+            <div><input type="text" name="username" value="<?php echo '@' . $user['username'] ?>" disabled></div>
             <div> Job title </div>
-            <div><input type="text" name="position"></div>
+            <div><input type="text" name="position" value="<?php echo $user['position'] ?>"></div>
             <div> Profile image </div>
             <div><input type="file" name="avatar"></div>
             <div> Date of birth </div>
@@ -102,37 +102,26 @@ $user = $data['users'][$_SESSION['user_id']];
             <div> Your phone number </div>
             <div><input type="text" name="phonenumber" value=<?php echo $user['phone_number'] ?>></div>
             <div> Current address </div>
-            <div><textarea id="address" name="address" rows="4" cols="50"></textarea></div>
-            
+            <div><textarea id="address" name="address" rows="4" cols="50"><?php echo $user['address'] ?></textarea></div>
+            <div><button onclick="btn_cancel_click()">Cancel</button></div>
+            <div><button onclick="btn_update_click()">Update</button></div>
         </div>
 
     </div>
 
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
+        var edit_modal = document.getElementById("edit_modal");
         var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
-            modal.style.display = "none";
+            edit_modal.style.display = "none";
         }
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+        function btn_edit_account_click() {
+            edit_modal.style.display = "block";
+        }
+
+        function btn_cancel_click() {
+            edit_modal.style.display = "none";
         }
     </script>
 

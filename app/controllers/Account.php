@@ -16,14 +16,16 @@ class Account extends Controller
         // process data: key->value
         while ($user = $users->fetch_assoc()) {
             $data['users'][$user['ID']] = [
-                'full_name' => $user['fullName'],
+                'first_name' => $user['firstName'],
+                'last_name' => $user['lastName'], 
                 'email' => $user['email'],
                 'username' => $user['username'],
                 'position' => $user['position'],
                 'role_id' => $user['roleID'],
                 'avatar' => $user['avatar'],
                 'DOB' => $user['DOB'],
-                'phone_number' => $user['phoneNumber']
+                'phone_number' => $user['phoneNumber'],
+                'address' => $user['address']
             ];
         }
         $this->view('account', $data);
