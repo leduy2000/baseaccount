@@ -11,6 +11,11 @@ class Login extends Controller
 
     public function index()
     {
+        session_start();
+        if (isset($_SESSION['user_id'])) {
+            header('location: /baseaccount/account');
+            exit();
+        }
         $this->view('login', ['page' => 'regular']);
     }
 

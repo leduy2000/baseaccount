@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 $user = $data['users'][$_SESSION['user_id']];
 ?>
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ $user = $data['users'][$_SESSION['user_id']];
                     <li><a class="active">Account overview</a></li>
                     <li><button onclick="btn_edit_account_click()">Edit account</button></li>
                     <li><button>Edit language</button></li>
-                    <li><button>Edit password</button></li>
+                    <li><button onclick="btn_password_click()">Edit password</button></li>
                     <li><button>Edit theme color</button></li>
                     <li><button>Set timesheet</button></li>
                     <li><button>2-factor authentication</button></li>
@@ -58,56 +58,54 @@ $user = $data['users'][$_SESSION['user_id']];
         </div>
     </div>
 
-    <!-- The Modal -->
-    <div id="edit_modal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div> EDIT PERSONAL PROFILE </div>
-            <div> Your first name </div>
-            <div><input type="text" name="firstname" value="<?php echo $user['first_name'] ?>"></div>
-            <div> Your last name </div>
-            <div><input type="text" name="lastname" value="<?php echo $user['last_name'] ?>"></div>
-            <div> Email </div>
-            <div><input type="text" name="email" value="<?php echo $user['email'] ?>" disabled></div>
-            <div> Username </div>
-            <div><input type="text" name="username" value="<?php echo '@' . $user['username'] ?>" disabled></div>
-            <div> Job title </div>
-            <div><input type="text" name="position" value="<?php echo $user['position'] ?>"></div>
-            <div> Profile image </div>
-            <div><input type="file" name="avatar"></div>
-            <div> Date of birth </div>
-            <select name="date" id="date">
-                <?php
-                for ($date = 1; $date <= 31; $date++) {
-                    echo "<option value=" . $date . ">" . $date . "</option>";
-                }
-                ?>
-            </select>
-            <select name="month" id="month">
-                <?php
-                for ($month = 1; $month <= 12; $month++) {
-                    echo "<option value=" . $month . ">" . $month . "</option>";
-                }
-                ?>
-            </select>
-            <select name="year" id="year">
-                <?php
-                for ($year = 1930; $year <= 2010; $year++) {
-                    echo "<option value=" . $year . ">" . $year . "</option>";
-                }
-                ?>
-            </select>
-            <div> Your phone number </div>
-            <div><input type="text" name="phonenumber" value=<?php echo $user['phone_number'] ?>></div>
-            <div> Current address </div>
-            <div><textarea id="address" name="address" rows="4" cols="50"><?php echo $user['address'] ?></textarea></div>
-            <div><button onclick="btn_cancel_click()">Cancel</button></div>
-            <div><button onclick="btn_update_click()">Update</button></div>
+    <form action="/baseaccount/account/user_update" method="POST">
+        <div id="edit_modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div> EDIT PERSONAL PROFILE </div>
+                <div> Your first name </div>
+                <div><input type="text" name="firstname" value="<?php echo $user['first_name'] ?>"></div>
+                <div> Your last name </div>
+                <div><input type="text" name="lastname" value="<?php echo $user['last_name'] ?>"></div>
+                <div> Email </div>
+                <div><input type="text" name="email" value="<?php echo $user['email'] ?>" disabled></div>
+                <div> Username </div>
+                <div><input type="text" name="username" value="<?php echo '@' . $user['username'] ?>" disabled></div>
+                <div> Job title </div>
+                <div><input type="text" name="position" value="<?php echo $user['position'] ?>"></div>
+                <div> Profile image </div>
+                <div><input type="file" name="avatar"></div>
+                <div> Date of birth </div>
+                <select name="date" id="date">
+                    <?php
+                    for ($date = 1; $date <= 31; $date++) {
+                        echo "<option value=" . $date . ">" . $date . "</option>";
+                    }
+                    ?>
+                </select>
+                <select name="month" id="month">
+                    <?php
+                    for ($month = 1; $month <= 12; $month++) {
+                        echo "<option value=" . $month . ">" . $month . "</option>";
+                    }
+                    ?>
+                </select>
+                <select name="year" id="year">
+                    <?php
+                    for ($year = 2010; $year >= 1930; $year--) {
+                        echo "<option value=" . $year . ">" . $year . "</option>";
+                    }
+                    ?>
+                </select>
+                <div> Your phone number </div>
+                <div><input type="text" name="phonenumber" value="<?php echo $user['phone_number'] ?>"></div>
+                <div> Current address </div>
+                <div><textarea id="address" name="address" rows="4" cols="50"><?php echo $user['address'] ?></textarea></div>
+                <div><input type="button" name="btn_cancel" value="Cancel" onclick="btn_cancel_click()"></div>
+                <div><input type="submit" name="btn_update" value="Update"></div>
+            </div>
         </div>
-
-    </div>
+    </form>
 
     <script>
         var edit_modal = document.getElementById("edit_modal");
@@ -122,6 +120,10 @@ $user = $data['users'][$_SESSION['user_id']];
 
         function btn_cancel_click() {
             edit_modal.style.display = "none";
+        }
+
+        function btn_update_click() {
+
         }
     </script>
 
