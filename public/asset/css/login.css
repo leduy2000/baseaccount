@@ -4,7 +4,7 @@
 }
 
 #left-side {
-    width: 39%;
+    width: 32%;
     height: 100%;
     position: absolute;
     top: 0;
@@ -13,7 +13,7 @@
 }
 
 #right-side {
-    width: 61%;
+    width: 78%;
     float: left;
     height: 100%;
     overflow: hidden;

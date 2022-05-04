@@ -64,7 +64,46 @@ $user = $data['users'][$_SESSION['user_id']];
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p><?php echo $user['full_name']?></p>
+            <div> EDIT PERSONAL PROFILE </div>
+            <div> Your first name </div>
+            <div><input type="text" name="firstname"></div>
+            <div> Your last name </div>
+            <div><input type="text" name="lastname"></div>
+            <div> Email </div>
+            <div><input type="text" name="email" value=<?php echo $user['email'] ?> disabled></div>
+            <div> Username </div>
+            <div><input type="text" name="username" value=<?php echo '@' . $user['username'] ?> disabled></div>
+            <div> Job title </div>
+            <div><input type="text" name="position"></div>
+            <div> Profile image </div>
+            <div><input type="file" name="avatar"></div>
+            <div> Date of birth </div>
+            <select name="date" id="date">
+                <?php
+                for ($date = 1; $date <= 31; $date++) {
+                    echo "<option value=" . $date . ">" . $date . "</option>";
+                }
+                ?>
+            </select>
+            <select name="month" id="month">
+                <?php
+                for ($month = 1; $month <= 12; $month++) {
+                    echo "<option value=" . $month . ">" . $month . "</option>";
+                }
+                ?>
+            </select>
+            <select name="year" id="year">
+                <?php
+                for ($year = 1930; $year <= 2010; $year++) {
+                    echo "<option value=" . $year . ">" . $year . "</option>";
+                }
+                ?>
+            </select>
+            <div> Your phone number </div>
+            <div><input type="text" name="phonenumber" value=<?php echo $user['phone_number'] ?>></div>
+            <div> Current address </div>
+            <div><textarea id="address" name="address" rows="4" cols="50"></textarea></div>
+            
         </div>
 
     </div>
