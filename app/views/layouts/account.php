@@ -61,7 +61,7 @@ $user = $data['users'][$_SESSION['user_id']];
     <form action="/baseaccount/account/user_update" method="POST">
         <div id="edit_modal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close" onclick="btn_cancel_click()">&times;</span>
                 <div> EDIT PERSONAL PROFILE </div>
                 <div> Your first name </div>
                 <div><input type="text" name="firstname" value="<?php echo $user['first_name'] ?>"></div>
@@ -107,23 +107,40 @@ $user = $data['users'][$_SESSION['user_id']];
         </div>
     </form>
 
+    <form action="/baseaccount/account/user_change_password" method="POST">
+        <div id="password_modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="btn_cancel_click()">&times;</span>
+                <div> CHANGE PASSWORD </div>
+                <div> Current password </div>
+                <div><input type="password" name="cur_password"></div>
+                <div> New password </div>
+                <div><input type="password" name="new_password"></div>
+                <div> Retype new password </div>
+                <div><input type="password" name="rep_password"></div>
+                <div> Force logout </div>
+                <div> Change your password may force you to logout of every mobile device </div>
+                <div><input type="button" name="btn_cancel" value="Cancel" onclick="btn_cancel_click()"></div>
+                <div><input type="submit" name="btn_change_password" value="Change password"></div>
+            </div>
+        </div>
+    </form>
+
     <script>
         var edit_modal = document.getElementById("edit_modal");
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function() {
-            edit_modal.style.display = "none";
-        }
+        var password_modal = document.getElementById("password_modal");
 
         function btn_edit_account_click() {
             edit_modal.style.display = "block";
         }
 
-        function btn_cancel_click() {
-            edit_modal.style.display = "none";
+        function btn_password_click() {
+            password_modal.style.display = "block";
         }
 
-        function btn_update_click() {
-
+        function btn_cancel_click() {
+            password_modal.style.display = "none";
+            edit_modal.style.display = "none";
         }
     </script>
 

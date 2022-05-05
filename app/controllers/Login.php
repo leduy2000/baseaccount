@@ -44,6 +44,7 @@ class Login extends Controller
                     exit();
                 }
             }
+            header('location: /baseaccount');
         }
     }
 }

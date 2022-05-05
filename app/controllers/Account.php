@@ -13,7 +13,7 @@ class Account extends Controller
     {
         session_start();
         if (isset($_SESSION['user_id'])) {
-            $data = $this->get_users();
+            $data = $this->user_model->get_users();
             $data['page'] = 'profile';
             $this->view('account', $data);
         } else {
@@ -29,12 +29,13 @@ class Account extends Controller
         header('location: /baseaccount');
     }
 
-    public function user_update()
-    {
+    //TODO: follow convention!!!!!
+    public function user_update(){
         session_start();
-        if (isset($_POST['btn_update'])) {
+        if (isset($_POST['btn_update'])){
             $info = [];
             $info['ID'] = $_SESSION['user_id'];
+            //TODO: sanitize request data
             $info['first_name'] = $_POST['firstname'];
             $info['last_name'] = $_POST['lastname'];
             $info['position'] = $_POST['position'];
@@ -49,25 +50,14 @@ class Account extends Controller
         }
     }
 
-    public function get_users()
-    {
-        // process data: key->value
-        $data = [];
-        $users = $this->user_model->get_all('User');
-        while ($user = $users->fetch_assoc()) {
-            $data['users'][$user['ID']] = [
-                'first_name' => $user['firstName'],
-                'last_name' => $user['lastName'],
-                'email' => $user['email'],
-                'username' => $user['username'],
-                'position' => $user['position'],
-                'role_id' => $user['roleID'],
-                'avatar' => $user['avatar'],
-                'DOB' => $user['DOB'],
-                'phone_number' => $user['phoneNumber'],
-                'address' => $user['address']
-            ];
+    public function user_change_password() {
+        session_start();
+        if (isset($_POST['btn_change_password'])) {
+            $info = [];
+            $info['ID'] = $_SESSION['user_id'];
+            $info['new_password'] = $_POST['new_password'];
+            $this->user_model->update_password($info);
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
-        return $data;
     }
 }
