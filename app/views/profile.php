@@ -11,10 +11,10 @@
         <div class="btn-edit" onclick="btn_edit_account_click()">Edit my account</div>
     </div>
     <div class="profile">
-        <div><?php echo $user['last_name'] . ' ' . $user['first_name'] ?></div>
-        <div><?php echo $user['position'] ?></div>
-        <div><?php echo "Email address" . $user['email'] ?></div>
-        <div><?php echo "Phone number" . $user['phone_number'] ?></div>
+        <div class="profile-title"><?php echo $user['last_name'] . ' ' . $user['first_name'] ?></div>
+        <div class="profile-subtitle"><?php echo $user['position'] ?></div>
+        <div><b>Email address</b><?php echo $user['email'] ?></div>
+        <div><b>Phone number</b><?php echo $user['phone_number'] ?></div>
     </div>
 
 </div>
