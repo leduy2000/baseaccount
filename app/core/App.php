@@ -8,7 +8,8 @@ class App
     public $method = 'index';
     public $params = [];
 
-    public function __construct() {
+    public function __construct()
+    {
         $arr = $this->get_url();
 
         // controller

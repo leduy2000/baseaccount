@@ -2,7 +2,8 @@
 
 class User extends DB
 {
-    public function get_users() {
+    public function get_users()
+    {
         $data = [];
         $users = $this->get_all('User');
         while ($user = $users->fetch_assoc()) {
@@ -22,16 +23,27 @@ class User extends DB
         return $data;
     }
 
-    public function update($info) {
-        $sql = "update user set firstName = '".$info['first_name'].
-        "', lastName = '".$info['last_name']."', position = '".$info['position']. 
-        "', avatar = '".$info['avatar']."', DOB = '".$info['DOB']."', phoneNumber = '".$info['phone_number'].
-        "' where ID = '".$info['ID']."'";
+    public function update_avatar($info)
+    {
+        $sql = "update user set avatar = '" . $info['avatar'] . "' where ID = '" . $info['ID'] . "'";
         $this->execute($sql);
     }
 
-    public function update_password($info) {
-        $sql = "update user set password = '".$info['new_password']."' where ID = '".$info['ID']."'";
+    public function update($info)
+    {
+        $sql = "update user set firstName = '" . $info['first_name'] .
+            "', lastName = '" . $info['last_name'] . "', position = '" . $info['position'] .
+            "', DOB = '" . $info['DOB'] . "', phoneNumber = '" . $info['phone_number'] .
+            "' where ID = '" . $info['ID'] . "'";
+        $this->execute($sql);
+        if ($info['avatar'] != '')
+            $this->update_avatar($info);
+    }
+
+    public function update_password($info)
+    {
+        $sql = "update user set password = '" . $info['new_password'] . "' where ID = '" . $info['ID'] . "'";
         $this->execute($sql);
     }
+
 }

@@ -19,7 +19,6 @@ class Account extends Controller
         } else {
             header('location: /baseaccount');
         }
-        
     }
 
     public function user_logout()
@@ -30,16 +29,17 @@ class Account extends Controller
     }
 
     //TODO: follow convention!!!!!
-    public function user_update(){
+    public function user_update()
+    {
         session_start();
-        if (isset($_POST['btn_update'])){
+        if (isset($_POST['btn_update'])) {
             $info = [];
             $info['ID'] = $_SESSION['user_id'];
             //TODO: sanitize request data
             $info['first_name'] = $_POST['firstname'];
             $info['last_name'] = $_POST['lastname'];
             $info['position'] = $_POST['position'];
-            $info['avatar'] = $_POST['avatar'];
+            $info['avatar'] = $this->process_img();
             $info['phone_number'] = $_POST['phonenumber'];
             $date = $_POST['date'];
             $month = $_POST['month'];
@@ -50,14 +50,38 @@ class Account extends Controller
         }
     }
 
-    public function user_change_password() {
+    public function user_change_password()
+    {
         session_start();
         if (isset($_POST['btn_change_password'])) {
             $info = [];
             $info['ID'] = $_SESSION['user_id'];
             $info['new_password'] = $_POST['new_password'];
             $this->user_model->update_password($info);
+            if ($_POST['force-logout'] == 'yes') {
+                $this->user_logout();
+                exit();
+            }
             header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
+    }
+
+
+    public function process_img()
+    {
+        $root = "D:/xampp/htdocs/";
+        $target_dir = "/baseaccount/public/asset/img/avatar/";
+        $target_file = $target_dir . basename($_FILES['file_upload']['name']);
+        $type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        if (!$type)
+            return '';
+        if (!getimagesize($_FILES['file_upload']['tmp_name']))
+            return '';
+        $extensions = ['jpg', 'png', 'jpeg'];
+        if (in_array($type, $extensions)) {
+            move_uploaded_file($_FILES['file_upload']['tmp_name'], $root . $target_file);
+            return $target_file;
+        }
+        return '';
     }
 }

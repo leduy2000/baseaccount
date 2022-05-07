@@ -16,6 +16,11 @@ $user = $data['users'][$_SESSION['user_id']];
     <div class="container">
         <div class="panel">
             <ul>
+                <li>
+                    <div>
+                        <img class="avatar-panel" src="<?php echo $user['avatar'] ?>">
+                    </div>
+                </li>
                 <li><a class="active" href="/baseaccount/account">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -170,7 +175,7 @@ $user = $data['users'][$_SESSION['user_id']];
         </div>
     </div>
 
-    <form action="/baseaccount/account/user_update" method="POST">
+    <form action="/baseaccount/account/user_update" method="POST" enctype="multipart/form-data">
         <div id="edit_modal" class="modal location-edit">
 
             <div class="modal-content edit">
@@ -200,11 +205,12 @@ $user = $data['users'][$_SESSION['user_id']];
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Profile image </div>
-                        <div><input type="file" name="avatar"></div>
+                        <div><input type="file" name="file_upload"></div>
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Date of birth </div>
                         <select name="date" id="date">
+                            <option value="0"> --Select date--</option>
                             <?php
                             for ($date = 1; $date <= 31; $date++) {
                                 echo "<option value=" . $date . ">" . $date . "</option>";
@@ -212,6 +218,7 @@ $user = $data['users'][$_SESSION['user_id']];
                             ?>
                         </select>
                         <select name="month" id="month">
+                            <option value="0"> --Select month--</option>
                             <?php
                             for ($month = 1; $month <= 12; $month++) {
                                 echo "<option value=" . $month . ">" . $month . "</option>";
@@ -219,6 +226,7 @@ $user = $data['users'][$_SESSION['user_id']];
                             ?>
                         </select>
                         <select name="year" id="year">
+                            <option value="0"> --Select year--</option>
                             <?php
                             for ($year = 2010; $year >= 1930; $year--) {
                                 echo "<option value=" . $year . ">" . $year . "</option>";
