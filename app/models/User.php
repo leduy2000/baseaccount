@@ -33,7 +33,7 @@ class User extends DB
     {
         $sql = "update user set firstName = '" . $info['first_name'] .
             "', lastName = '" . $info['last_name'] . "', position = '" . $info['position'] .
-            "', DOB = '" . $info['DOB'] . "', phoneNumber = '" . $info['phone_number'] .
+            "', DOB = '" . $info['DOB'] . "', phoneNumber = '" . $info['phone_number'] . "', address = '" . $info['address'] .
             "' where ID = '" . $info['ID'] . "'";
         $this->execute($sql);
         if ($info['avatar'] != '')
@@ -45,5 +45,4 @@ class User extends DB
         $sql = "update user set password = '" . $info['new_password'] . "' where ID = '" . $info['ID'] . "'";
         $this->execute($sql);
     }
-
 }

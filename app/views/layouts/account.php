@@ -77,7 +77,7 @@ $user = $data['users'][$_SESSION['user_id']];
                         </div>
                         Applications
                     </a></li>
-                <li><a href="/baseaccount/account/user_logout">
+                <li><a id="btn_logout">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-power" viewBox="0 0 16 16">
                                 <path d="M7.5 1v7h1V1h-1z" />
@@ -102,7 +102,7 @@ $user = $data['users'][$_SESSION['user_id']];
                                     <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
                                 </svg> Account overview </div>
                         </button></li>
-                    <li><button onclick="btn_edit_account_click()">
+                    <li><button id="btn_edit_account">
                             <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                                     <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
                                 </svg> Edit account</div>
@@ -113,7 +113,7 @@ $user = $data['users'][$_SESSION['user_id']];
                                     <path d="m6.94 7.44 4.95-2.83-2.83 4.95-4.949 2.83 2.828-4.95z" />
                                 </svg> Edit language</div>
                         </button></li>
-                    <li><button onclick="btn_password_click()">
+                    <li><button id="btn_edit_password">
                             <div><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                     <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
@@ -175,21 +175,21 @@ $user = $data['users'][$_SESSION['user_id']];
         </div>
     </div>
 
-    <form action="/baseaccount/account/user_update" method="POST" enctype="multipart/form-data">
+    <form enctype="multipart/form-data">
         <div id="edit_modal" class="modal location-edit">
 
             <div class="modal-content edit">
 
-                <div class="modal-title"> EDIT PERSONAL PROFILE <span class="close" onclick="btn_cancel_click()">&times;</span> </div>
+                <div class="modal-title"> EDIT PERSONAL PROFILE <span class="close">&times;</span> </div>
 
                 <div class="modal-wrap">
                     <div class="modal-row">
                         <div class="modal-label"> Your first name </div>
-                        <div class="modal-input"><input type="text" name="firstname" value="<?php echo $user['first_name'] ?>"></div>
+                        <div class="modal-input"><input type="text" name="firstname" id="firstname" value="<?php echo $user['first_name'] ?>"></div>
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Your last name </div>
-                        <div><input type="text" name="lastname" value="<?php echo $user['last_name'] ?>"></div>
+                        <div><input type="text" name="lastname" id="lastname" value="<?php echo $user['last_name'] ?>"></div>
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Email </div>
@@ -201,16 +201,16 @@ $user = $data['users'][$_SESSION['user_id']];
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Job title </div>
-                        <div><input type="text" name="position" value="<?php echo $user['position'] ?>"></div>
+                        <div><input type="text" name="position" id="position" value="<?php echo $user['position'] ?>"></div>
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Profile image </div>
-                        <div><input type="file" name="file_upload"></div>
+                        <div><input type="file" name="file_upload" id="file_upload"></div>
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Date of birth </div>
                         <select name="date" id="date">
-                            <option value="0"> --Select date--</option>
+                            <option> --Select date--</option>
                             <?php
                             for ($date = 1; $date <= 31; $date++) {
                                 echo "<option value=" . $date . ">" . $date . "</option>";
@@ -218,7 +218,7 @@ $user = $data['users'][$_SESSION['user_id']];
                             ?>
                         </select>
                         <select name="month" id="month">
-                            <option value="0"> --Select month--</option>
+                            <option> --Select month--</option>
                             <?php
                             for ($month = 1; $month <= 12; $month++) {
                                 echo "<option value=" . $month . ">" . $month . "</option>";
@@ -226,7 +226,7 @@ $user = $data['users'][$_SESSION['user_id']];
                             ?>
                         </select>
                         <select name="year" id="year">
-                            <option value="0"> --Select year--</option>
+                            <option> --Select year--</option>
                             <?php
                             for ($year = 2010; $year >= 1930; $year--) {
                                 echo "<option value=" . $year . ">" . $year . "</option>";
@@ -236,15 +236,15 @@ $user = $data['users'][$_SESSION['user_id']];
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Your phone number </div>
-                        <div><input type="text" name="phonenumber" value="<?php echo $user['phone_number'] ?>"></div>
+                        <div><input type="text" name="phonenumber" id="phonenumber" value="<?php echo $user['phone_number'] ?>"></div>
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Current address </div>
-                        <div><textarea id="address" name="address" rows="2" cols="78%"><?php echo $user['address'] ?></textarea></div>
+                        <div><textarea id="address" name="address" id="address" rows="2" cols="78%"><?php echo $user['address'] ?></textarea></div>
                     </div>
                     <div class="modal-row">
-                        <button class="btn-left" type="button" onclick="btn_cancel_click()">Cancel</button>
-                        <button class="btn-right" type="submit" name="btn_update">Update</button>
+                        <button class="btn-left" type="button">Cancel</button>
+                        <button class="btn-right" type="button" id="btn_update">Update</button>
                     </div>
                 </div>
             </div>
@@ -252,56 +252,106 @@ $user = $data['users'][$_SESSION['user_id']];
         </div>
     </form>
 
-    <form action="/baseaccount/account/user_change_password" method="POST">
+    <form>
         <div id="password_modal" class="modal location-password">
             <div class="modal-content password">
-                <div class="modal-title"> CHANGE PASSWORD <span class="close" onclick="btn_cancel_click()">&times;</span></div>
+                <div class="modal-title"> CHANGE PASSWORD <span class="close">&times;</span></div>
                 <div class="modal-wrap">
                     <div class="modal-row">
                         <div class="modal-label"> Current password </div>
-                        <div><input type="password" name="cur_password" placeholder="Current password"></div>
+                        <div><input type="password" id="cur_password" placeholder="Current password"></div>
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> New password </div>
-                        <div><input type="password" name="new_password" placeholder="New password"></div>
+                        <div><input type="password" id="new_password" placeholder="New password"></div>
                     </div>
                     <div <div class="modal-row">
                         <div class="modal-label"> Retype new password </div>
-                        <div><input type="password" name="rep_password" placeholder="Retype new password"></div>
+                        <div><input type="password" id="rep_password" placeholder="Retype new password"></div>
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Force logout </div>
-                        <select name="force-logout" id="force-logout">
-                            <option value="no">NO</option>
-                            <option value="yes">YES</option>
+                        <select name="force-logout" id="force_logout">
+                            <option value="false">NO</option>
+                            <option value="true">YES</option>
                         </select>
                     </div>
                     <div class="modal-row note"> Change your password may force you to logout of every mobile device </div>
                     <div class="modal-row">
-                        <button class="btn-left" type="button" onclick="btn_cancel_click()">Cancel</button>
-                        <button class="btn-right" type="submit" name="btn_change_password">Update</button>
+                        <button class="btn-left" type="button">Cancel</button>
+                        <button class="btn-right" type="button" id="btn_change_password">Update</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
+    
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        var edit_modal = document.getElementById("edit_modal");
-        var password_modal = document.getElementById("password_modal");
+        $(function() {
+            $("#btn_edit_account, #btn-edit").click(function() {
+                $("#edit_modal").show();
+            });
 
-        function btn_edit_account_click() {
-            edit_modal.style.display = "block";
-        }
+            $("#btn_edit_password").click(function() {
+                $("#password_modal").show();
+            });
 
-        function btn_password_click() {
-            password_modal.style.display = "block";
-        }
+            $(".close, .btn-left").click(function() {
+                $("#edit_modal").hide();
+                $("#password_modal").hide();
+            });
 
-        function btn_cancel_click() {
-            password_modal.style.display = "none";
-            edit_modal.style.display = "none";
-        }
+            $("#btn_update").click(function() {
+                var form_data = new FormData();
+                form_data.append('firstname', $('#firstname').val());
+                form_data.append('lastname', $('#lastname').val());
+                form_data.append('position', $('#position').val());
+                form_data.append('date', $('#date').val());
+                form_data.append('month', $('#month').val());
+                form_data.append('year', $('#year').val());
+                form_data.append('file_upload', $('#file_upload')[0].files[0]);
+                form_data.append('phonenumber', $('#phonenumber').val());
+                form_data.append('address', $('#address').val());
+                $.ajax({
+                    url: "/baseaccount/account/user_update",
+                    method: "POST",
+                    data: form_data,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        location.reload();
+                    },
+                });
+            });
+
+            $("#btn_change_password").click(function() {
+                var cur_password = $('#cur_password').val();
+                var new_password = $('#new_password').val();
+                var rep_password = $('#rep_password').val();
+                var force_logout = $('#force_logout').val();
+                alert(new_password);
+                $.ajax({
+                    url: "/baseaccount/account/user_change_password",
+                    method: "POST",
+                    data: {
+                        new_password: new_password
+                    },
+                    success: function(data) {
+                        if (force_logout == 'true') {
+                            window.location = "/baseaccount/account/user_logout";
+                        } else {
+                            location.reload();
+                        }
+                    }
+                });
+            });
+
+            $("#btn_logout").click(function() {
+                alert('ALO');
+            });
+        });
     </script>
 
 </body>

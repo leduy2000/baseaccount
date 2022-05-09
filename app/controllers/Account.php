@@ -32,7 +32,7 @@ class Account extends Controller
     public function user_update()
     {
         session_start();
-        if (isset($_POST['btn_update'])) {
+        if (isset($_POST['firstname'])) {
             $info = [];
             $info['ID'] = $_SESSION['user_id'];
             //TODO: sanitize request data
@@ -41,28 +41,26 @@ class Account extends Controller
             $info['position'] = $_POST['position'];
             $info['avatar'] = $this->process_img();
             $info['phone_number'] = $_POST['phonenumber'];
+            $info['address'] = $_POST['address'];
             $date = $_POST['date'];
             $month = $_POST['month'];
             $year = $_POST['year'];
             $info['DOB'] = $year . '-' . $month . '-' . $date;
             $this->user_model->update($info);
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
 
     public function user_change_password()
     {
         session_start();
-        if (isset($_POST['btn_change_password'])) {
+        if (isset($_POST['new_password'])) {
             $info = [];
             $info['ID'] = $_SESSION['user_id'];
             $info['new_password'] = $_POST['new_password'];
             $this->user_model->update_password($info);
             if ($_POST['force-logout'] == 'yes') {
                 $this->user_logout();
-                exit();
             }
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
 

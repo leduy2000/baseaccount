@@ -8,7 +8,7 @@
                 ?>
             </div>
         </div>
-        <div class="btn-edit" onclick="btn_edit_account_click()">Edit my account</div>
+        <div id="btn-edit">Edit my account</div>
     </div>
     <div class="profile">
         <div><img class="avatar-main" src="<?php echo $user['avatar'] ?>"></div>

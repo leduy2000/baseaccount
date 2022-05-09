@@ -23,8 +23,8 @@ body {
 }
 
 .panel ul img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
 }
 
 .panel li a {
@@ -68,8 +68,8 @@ body {
 }
 
 .menu ul img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 
 .menu li button {
@@ -159,7 +159,7 @@ body {
     margin-left: 2%;
 }
 
-.btn-edit {
+#btn-edit {
     background-color: #3eb743;
     color: #fff;
     padding: 9px 15px;
@@ -168,7 +168,7 @@ body {
     margin-left: 80.2%;
 }
 
-.btn-edit:hover {
+#btn-edit:hover {
 
     cursor: pointer;
 }

@@ -25,6 +25,7 @@
             <img src="/baseaccount/public/asset/img/background.png" />
         </div>
     </div>
+    
 </body>
 
 </html>
