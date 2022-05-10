@@ -205,7 +205,7 @@ $user = $data['users'][$_SESSION['user_id']];
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Profile image </div>
-                        <div><input type="file" name="file_upload" id="file_upload"></div>
+                        <div><input type="file" name="file_upload" id="file_upload" style="border:1px solid"></div>
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Date of birth </div>
@@ -265,7 +265,7 @@ $user = $data['users'][$_SESSION['user_id']];
                         <div class="modal-label"> New password </div>
                         <div><input type="password" id="new_password" placeholder="New password"></div>
                     </div>
-                    <div <div class="modal-row">
+                    <div class="modal-row">
                         <div class="modal-label"> Retype new password </div>
                         <div><input type="password" id="rep_password" placeholder="Retype new password"></div>
                     </div>
@@ -285,7 +285,32 @@ $user = $data['users'][$_SESSION['user_id']];
             </div>
         </div>
     </form>
-    
+
+    <div id="confirm_modal" class="modal location-confirm">
+        <div class="modal-content confirm">
+            <div class="close">&times;</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Exclamation_flat_icon.svg/1200px-Exclamation_flat_icon.svg.png" id="ex_icon">
+            <span> Bạn có muốn đăng xuất khỏi hệ thống ngay bây giờ?</span>
+            <div class="modal-row">
+                <button class="btn-confirm no" type="button">Close</button>
+                <button class="btn-confirm ok" type="button" id="btn_quit">OK</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="info_modal" class="modal location-confirm">
+        <div class="modal-content info">
+            <div class="close">&times;</div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/2048px-Flat_tick_icon.svg.png" id="tick_icon">
+            <span> Update profile successfully</span>
+            <div class="modal-row">
+                <button class="btn_ok" type="button" id="btn_ok">OK</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
@@ -298,9 +323,10 @@ $user = $data['users'][$_SESSION['user_id']];
                 $("#password_modal").show();
             });
 
-            $(".close, .btn-left").click(function() {
+            $(".close, .btn-left, .no").click(function() {
                 $("#edit_modal").hide();
                 $("#password_modal").hide();
+                $("#confirm_modal").hide();
             });
 
             $("#btn_update").click(function() {
@@ -321,7 +347,14 @@ $user = $data['users'][$_SESSION['user_id']];
                     processData: false,
                     contentType: false,
                     success: function(data) {
-                        location.reload();
+                        $("#edit_modal").hide();
+                        $("#tick_icon").css({
+                            "height": "35px",
+                            "width": "35px",
+                            "margin-left": "6%",
+                            "margin-right": "6%"
+                        });
+                        $("#info_modal").show();
                     },
                 });
             });
@@ -331,7 +364,6 @@ $user = $data['users'][$_SESSION['user_id']];
                 var new_password = $('#new_password').val();
                 var rep_password = $('#rep_password').val();
                 var force_logout = $('#force_logout').val();
-                alert(new_password);
                 $.ajax({
                     url: "/baseaccount/account/user_change_password",
                     method: "POST",
@@ -349,8 +381,22 @@ $user = $data['users'][$_SESSION['user_id']];
             });
 
             $("#btn_logout").click(function() {
-                alert('ALO');
+                $("#ex_icon").css({
+                    "height": "35px",
+                    "width": "35px",
+                    "margin-left": "4%",
+                    "margin-right": "4%"
+                });
+                $("#confirm_modal").show();
             });
+
+            $("#btn_quit").click(function() {
+                window.location = "/baseaccount/account/user_logout";
+            });
+
+            $("#btn_ok").click(function() {
+                location.reload();
+            })
         });
     </script>
 

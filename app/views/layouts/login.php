@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/baseaccount/public/asset/css/login.css"/>
+    <link rel="stylesheet" href="/baseaccount/public/asset/css/login.css" />
     <title>Login - Base Account</title>
 </head>
 
@@ -18,14 +18,40 @@
                         <img src="/baseaccount/public/asset/img/logo.full.png">
                     </a>
                 </div>
-                <?php require_once "../app/views/".$data['page'].".php" ?>
+                <?php require_once "../app/views/" . $data['page'] . ".php" ?>
             </div>
         </div>
         <div id="right-side">
             <img src="/baseaccount/public/asset/img/background.png" />
         </div>
     </div>
-    
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function() {
+
+            $("#btn_submit").click(function() {
+                var email = $('#email').val();
+                var password = $('#password').val();
+                $.ajax({
+                    url: "/baseaccount/login/user_login",
+                    method: "POST",
+                    data: {
+                        email: email,
+                        password: password
+                    },
+                    success: function(response) {
+                        if (response == 1) {
+                            window.location = "/baseaccount/account";
+                        } else {
+                            alert("NOPE");
+                        }
+                    }
+                });
+            });
+        })
+    </script>
 </body>
 
 </html>

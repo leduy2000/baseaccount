@@ -3,10 +3,6 @@
     margin: 0;
 }
 
-body {
-    width: 100%;
-}
-
 .panel {
     font-size: 12px;
     text-align: center;
@@ -165,7 +161,7 @@ body {
     padding: 9px 15px;
     border-radius: 4px;
     height: fit-content;
-    margin-left: 80.2%;
+    margin-left: 1030px;
 }
 
 #btn-edit:hover {
@@ -177,6 +173,7 @@ body {
     color: #222;
     font-size: 18px;
     font-weight: 300;
+    width: 300px;
 }
 
 .label {
@@ -226,7 +223,6 @@ body {
 /* The Close Button */
 .close {
     color: #aaaaaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
 }
@@ -273,10 +269,16 @@ body {
     padding: 1%;
 }
 
+.confirm {
+    width: 25%;
+    height: 16%;
+}
+
 .modal-content button {
     width: 48%;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-weight: bold;
     border: none;
     cursor: pointer;
 }
@@ -314,6 +316,22 @@ body {
     color: #666;
 }
 
+.btn-confirm {
+    margin-top: 7.5%;
+    border: none;
+    width: 50% !important;
+    background-color: #fff;
+}
+
+.quit {
+    color: #42b814;
+}
+
+.no {
+    color: #c65144;
+    float: left;
+}
+
 .avatar-main {
     width: 100px;
     height: 100px;
@@ -326,4 +344,18 @@ body {
     border-radius: 50%;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.location-confirm {
+    padding-top: 15%;
+}
+
+.info {
+    width: 22%;
+    height: 16%;
+}
+
+.btn_ok {
+    margin-top: 8.2%;
+    width: 100% !important;
 }

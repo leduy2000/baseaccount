@@ -30,7 +30,7 @@ class Login extends Controller
     }
 
     public function user_login() {
-        if (isset($_POST['btn_submit'])) {
+        if (isset($_POST['email'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];
             $res = $this->user_model->find_one('user', 'email', $email);
@@ -40,11 +40,11 @@ class Login extends Controller
                     session_start();
                     $_SESSION['user_id'] = $user['ID'];
                     $_SESSION['role_id'] = $user['roleID'];
-                    header('location: /baseaccount/account');
+                    echo 1;
                     exit();
                 }
             }
-            header('location: /baseaccount');
+            echo 0;
         }
     }
 }
