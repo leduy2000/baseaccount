@@ -29,7 +29,8 @@ class Login extends Controller
         $this->view('login', ['page' => 'recover']);
     }
 
-    public function user_login() {
+    public function user_login()
+    {
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
             $password = $_POST['password'];

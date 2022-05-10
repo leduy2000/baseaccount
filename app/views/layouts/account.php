@@ -311,35 +311,36 @@ $user = $data['users'][$_SESSION['user_id']];
     </div>
     </div>
 
+    <input type="file" id="img_upload" style="display:none"/> 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(function() {
             $("#btn_edit_account, #btn-edit").click(function() {
-                $("#edit_modal").show();
-            });
+                $("#edit_modal").show()
+            })
 
             $("#btn_edit_password").click(function() {
-                $("#password_modal").show();
-            });
+                $("#password_modal").show()
+            })
 
             $(".close, .btn-left, .no").click(function() {
-                $("#edit_modal").hide();
-                $("#password_modal").hide();
-                $("#confirm_modal").hide();
+                $("#edit_modal").hide()
+                $("#password_modal").hide()
+                $("#confirm_modal").hide()
             });
 
             $("#btn_update").click(function() {
-                var form_data = new FormData();
-                form_data.append('firstname', $('#firstname').val());
-                form_data.append('lastname', $('#lastname').val());
-                form_data.append('position', $('#position').val());
-                form_data.append('date', $('#date').val());
-                form_data.append('month', $('#month').val());
-                form_data.append('year', $('#year').val());
-                form_data.append('file_upload', $('#file_upload')[0].files[0]);
-                form_data.append('phonenumber', $('#phonenumber').val());
-                form_data.append('address', $('#address').val());
+                var form_data = new FormData()
+                form_data.append('firstname', $('#firstname').val())
+                form_data.append('lastname', $('#lastname').val())
+                form_data.append('position', $('#position').val())
+                form_data.append('date', $('#date').val())
+                form_data.append('month', $('#month').val())
+                form_data.append('year', $('#year').val())
+                form_data.append('file_upload', $('#file_upload')[0].files[0])
+                form_data.append('phonenumber', $('#phonenumber').val())
+                form_data.append('address', $('#address').val())
                 $.ajax({
                     url: "/baseaccount/account/user_update",
                     method: "POST",
@@ -347,17 +348,17 @@ $user = $data['users'][$_SESSION['user_id']];
                     processData: false,
                     contentType: false,
                     success: function(data) {
-                        $("#edit_modal").hide();
+                        $("#edit_modal").hide()
                         $("#tick_icon").css({
                             "height": "35px",
                             "width": "35px",
                             "margin-left": "6%",
                             "margin-right": "6%"
-                        });
-                        $("#info_modal").show();
-                    },
-                });
-            });
+                        })
+                        $("#info_modal").show()
+                    }
+                })
+            })
 
             $("#btn_change_password").click(function() {
                 var cur_password = $('#cur_password').val();
@@ -372,13 +373,13 @@ $user = $data['users'][$_SESSION['user_id']];
                     },
                     success: function(data) {
                         if (force_logout == 'true') {
-                            window.location = "/baseaccount/account/user_logout";
+                            window.location = "/baseaccount/account/user_logout"
                         } else {
-                            location.reload();
+                            location.reload()
                         }
                     }
-                });
-            });
+                })
+            })
 
             $("#btn_logout").click(function() {
                 $("#ex_icon").css({
@@ -386,18 +387,22 @@ $user = $data['users'][$_SESSION['user_id']];
                     "width": "35px",
                     "margin-left": "4%",
                     "margin-right": "4%"
-                });
-                $("#confirm_modal").show();
-            });
+                })
+                $("#confirm_modal").show()
+            })
 
             $("#btn_quit").click(function() {
                 window.location = "/baseaccount/account/user_logout";
-            });
+            })
 
             $("#btn_ok").click(function() {
-                location.reload();
+                location.reload()
             })
-        });
+
+            $("#avatar_main").click(function() {
+                $('#img_upload').trigger('click')
+            })
+        })
     </script>
 
 </body>

@@ -11,7 +11,7 @@
         <div id="btn-edit">Edit my account</div>
     </div>
     <div class="profile">
-        <div><img class="avatar-main" src="<?php echo $user['avatar'] ?>"></div>
+        <div><img class="avatar-main" id="avatar_main" src="<?php echo $user['avatar'] ?>"></div>
         <div>
             <div class="profile-title"><?php echo $user['last_name'] . ' ' . $user['first_name'] ?></div>
             <div class="profile-subtitle"><?php echo $user['position'] ?></div>
