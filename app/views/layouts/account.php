@@ -10,6 +10,7 @@ $user = $data['users'][$_SESSION['user_id']];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/baseaccount/public/asset/css/account.css" />
     <title>Account - True Platform</title>
+    <link rel="shortcut icon" href="https://share-gcdn.basecdn.net/apps/account.png" type="image/x-icon">
 </head>
 
 <body>

@@ -52,6 +52,8 @@ $(function () {
         var force_logout = $('#force_logout').val();
         if (new_password != rep_password) {
             alert("PASSWORD MISMATCH")
+        } else if (!validate_password(new_password)) {
+            alert("INVALID PASSWORD")
         } else {
             $.ajax({
                 url: "/baseaccount/account/user_change_password",
@@ -109,7 +111,7 @@ $(function () {
         $('#img_upload').trigger('click')
     })
 
-    $('#img_upload').change(function() {
+    $('#img_upload').change(function () {
         var form_data = new FormData()
         form_data.append('file_upload', $('#img_upload')[0].files[0])
         $.ajax({
