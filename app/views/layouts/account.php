@@ -311,11 +311,11 @@ $user = $data['users'][$_SESSION['user_id']];
     </div>
     </div>
 
-    <input type="file" id="img_upload" style="display:none"/> 
+    <input type="file" id="img_upload" style="display:none" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/baseaccount/public/asset/js/account.js"">
-    </script>
+    <script src="/baseaccount/public/asset/js/common.js"> </script>
+    <script src="/baseaccount/public/asset/js/account.js"> </script>
 
 </body>
 

@@ -35,14 +35,23 @@ class User extends DB
             "', lastName = '" . $info['last_name'] . "', position = '" . $info['position'] .
             "', DOB = '" . $info['DOB'] . "', phoneNumber = '" . $info['phone_number'] . "', address = '" . $info['address'] .
             "' where ID = '" . $info['ID'] . "'";
-        $this->execute($sql);
         if ($info['avatar'] != '')
             $this->update_avatar($info);
+        if ($this->execute($sql)) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+        
     }
 
     public function update_password($info)
     {
         $sql = "update user set password = '" . $info['new_password'] . "' where ID = '" . $info['ID'] . "'";
-        $this->execute($sql);
+        if ($this->execute($sql)) {
+            echo 1;
+        } else {
+            echo 0;
+        }
     }
 }

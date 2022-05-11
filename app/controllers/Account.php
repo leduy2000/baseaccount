@@ -50,6 +50,14 @@ class Account extends Controller
         }
     }
 
+    public function user_change_avatar() {
+        session_start();
+        $info = [];
+        $info['avatar'] = $this->process_img();
+        $info['ID'] = $_SESSION['user_id'];
+        $this->user_model->update_avatar($info);
+    }
+
     public function user_change_password()
     {
         session_start();
@@ -58,9 +66,6 @@ class Account extends Controller
             $info['ID'] = $_SESSION['user_id'];
             $info['new_password'] = $_POST['new_password'];
             $this->user_model->update_password($info);
-            if ($_POST['force-logout'] == 'yes') {
-                $this->user_logout();
-            }
         }
     }
 
