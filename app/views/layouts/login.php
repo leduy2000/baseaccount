@@ -28,29 +28,9 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $(function() {
-
-            $("#btn_submit").click(function() {
-                var email = $('#email').val();
-                var password = $('#password').val();
-                $.ajax({
-                    url: "/baseaccount/login/user_login",
-                    method: "POST",
-                    data: {
-                        email: email,
-                        password: password
-                    },
-                    success: function(response) {
-                        if (response == 1) {
-                            window.location = "/baseaccount/account";
-                        } else {
-                            alert("NOPE");
-                        }
-                    }
-                });
-            });
-        })
+    <script src="/baseaccount/public/asset/js/common.js"> </script>
+    <script src="/baseaccount/public/asset/js/login.js">
+        
     </script>
 </body>
 
