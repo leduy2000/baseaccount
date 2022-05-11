@@ -289,8 +289,10 @@ $user = $data['users'][$_SESSION['user_id']];
     <div id="confirm_modal" class="modal location-confirm">
         <div class="modal-content confirm">
             <div class="close">&times;</div>
+            <div>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Exclamation_flat_icon.svg/1200px-Exclamation_flat_icon.svg.png" id="ex_icon">
             <span> Bạn có muốn đăng xuất khỏi hệ thống ngay bây giờ?</span>
+            </div>
             <div class="modal-row">
                 <button class="btn-confirm no" type="button">Close</button>
                 <button class="btn-confirm ok" type="button" id="btn_quit">OK</button>

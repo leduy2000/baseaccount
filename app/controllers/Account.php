@@ -65,6 +65,7 @@ class Account extends Controller
             $info = [];
             $info['ID'] = $_SESSION['user_id'];
             $info['new_password'] = $_POST['new_password'];
+            $info['cur_password'] = $_POST['cur_password'];
             $this->user_model->update_password($info);
         }
     }

@@ -225,6 +225,7 @@
     color: #aaaaaa;
     font-size: 28px;
     font-weight: bold;
+    float: right;
 }
 
 .close:hover,

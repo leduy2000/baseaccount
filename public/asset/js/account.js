@@ -37,7 +37,8 @@ $(function () {
                     "height": "35px",
                     "width": "35px",
                     "margin-left": "6%",
-                    "margin-right": "6%"
+                    "margin-right": "6%",
+                    "margin-top": "10%"
                 })
                 $("#info_modal").show()
             }
@@ -56,6 +57,7 @@ $(function () {
                 url: "/baseaccount/account/user_change_password",
                 method: "POST",
                 data: {
+                    cur_password: cur_password,
                     new_password: new_password
                 },
                 success: function (response) {
@@ -65,7 +67,8 @@ $(function () {
                             "height": "35px",
                             "width": "35px",
                             "margin-left": "6%",
-                            "margin-right": "6%"
+                            "margin-right": "6%",
+                            "margin-top": "10%"
                         })
                         $("#span_text").text("Password was updated successfully")
                         $("#info_modal").show()
@@ -88,7 +91,8 @@ $(function () {
             "height": "35px",
             "width": "35px",
             "margin-left": "4%",
-            "margin-right": "4%"
+            "margin-right": "4%",
+            "margin-top": "10%"
         })
         $("#confirm_modal").show()
     })

@@ -37,18 +37,16 @@ class User extends DB
             "' where ID = '" . $info['ID'] . "'";
         if ($info['avatar'] != '')
             $this->update_avatar($info);
-        if ($this->execute($sql)) {
-            echo 1;
-        } else {
-            echo 0;
-        }
-        
+        $this->execute($sql);
     }
 
     public function update_password($info)
     {
         $sql = "update user set password = '" . $info['new_password'] . "' where ID = '" . $info['ID'] . "'";
-        if ($this->execute($sql)) {
+        $res = $this->find_one('user', 'ID', $info['ID']);
+        $user = $res->fetch_assoc();
+        if ($user['password'] == $info['cur_password']) {
+            $this->execute($sql);
             echo 1;
         } else {
             echo 0;
