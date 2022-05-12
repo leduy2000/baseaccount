@@ -43,10 +43,10 @@ class User extends DB
 
     public function update_password($info)
     {
-        $sql = "update user set password = '" . $info['new_password'] . "' where ID = '" . $info['ID'] . "'";
+        $sql = "update user set password = '" . password_hash($info['new_password'], PASSWORD_DEFAULT) . "' where ID = '" . $info['ID'] . "'";
         $res = $this->find_one('user', 'ID', $info['ID']);
         $user = $res->fetch_assoc();
-        if ($user['password'] == $info['cur_password']) {
+        if (password_verify($info['cur_password'], $user['password'])) {
             $this->execute($sql);
             echo 1;
         } else {

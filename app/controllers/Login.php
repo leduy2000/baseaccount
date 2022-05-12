@@ -38,7 +38,7 @@ class Login extends Controller
             $res = $this->user_model->find_one('user', 'email', $email);
             if ($res->num_rows) {
                 $user = $res->fetch_assoc();
-                if ($user['password'] == $password) {
+                if (password_verify($password, $user['password'])) {
                     session_start();
                     $_SESSION['user_id'] = $user['ID'];
                     $_SESSION['role_id'] = $user['roleID'];

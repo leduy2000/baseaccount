@@ -46,9 +46,6 @@ $(function () {
                     "margin-right": "6%",
                     "margin-top": "10%"
                 })
-                $(".modal-title").css({
-                    "padding": "0px 0px"
-                })
                 $("#info_modal").show()
             }
         })
@@ -86,6 +83,7 @@ $(function () {
                             "margin-top": "5%"
                         })
                         $(".span_text").text("Password was updated successfully")
+                        $("#info_icon").attr("src", "http://cdn.onlinewebfonts.com/svg/img_28550.png")
                         $("#info_modal").show()
                         if (force_logout == 'true') {
                             window.location = "/baseaccount/account/user_logout"
@@ -108,9 +106,6 @@ $(function () {
             "margin-left": "4%",
             "margin-right": "4%",
             "margin-top": "10%"
-        })
-        $(".modal-title").css({
-            "padding": "0px 0px"
         })
         $("#confirm_modal").show()
     })

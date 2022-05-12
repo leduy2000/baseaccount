@@ -1,8 +1,13 @@
+.label {
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
 .modal {
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 4%;
     left: 0;
     top: 0;
     width: 100%;

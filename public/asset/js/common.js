@@ -11,7 +11,7 @@ function error_popup() {
         "margin-top": "10%"
     })
     $("#btn_ok").css({"color":"#c65144"})
-    $("#info_icon").attr("src", "http://cdn.onlinewebfonts.com/svg/img_28550.png")
+    $("#info_icon").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/2048px-Flat_tick_icon.svg.png")
 }
 
 $("#btn_ok").click(function () {

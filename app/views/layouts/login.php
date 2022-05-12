@@ -30,7 +30,6 @@
 
     <div id="info_modal" class="modal location-confirm">
         <div class="modal-content info">
-            <div class="modal-title"><span class="close">&times;</span></div>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/2048px-Flat_tick_icon.svg.png" id="info_icon">
             <span class="span_text"></span>
             <div>
