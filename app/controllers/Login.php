@@ -16,6 +16,7 @@ class Login extends Controller
             header('location: /baseaccount/account');
             exit();
         }
+        //TODO: convention!! in PHP use double quote, JS single quote
         $this->view('login', ['page' => 'regular']);
     }
 

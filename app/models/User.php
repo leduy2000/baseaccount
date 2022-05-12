@@ -6,6 +6,7 @@ class User extends DB
     {
         $data = [];
         $users = $this->get_all('User');
+        //TODO: abstract fetch assoc
         while ($user = $users->fetch_assoc()) {
             $data['users'][$user['ID']] = [
                 'first_name' => $user['firstName'],

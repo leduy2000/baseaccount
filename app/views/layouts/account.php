@@ -8,7 +8,8 @@ $user = $data['users'][$_SESSION['user_id']];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/baseaccount/public/asset/css/account.css" />
+    <link rel="stylesheet" href="/baseaccount/public/asset/css/account.css" >
+    <link rel="stylesheet" href="/baseaccount/public/asset/css/common.css" >
     <title>Account - True Platform</title>
     <link rel="shortcut icon" href="https://share-gcdn.basecdn.net/apps/account.png" type="image/x-icon">
 </head>
@@ -243,7 +244,7 @@ $user = $data['users'][$_SESSION['user_id']];
                         <div class="modal-label"> Current address </div>
                         <div><textarea id="address" name="address" id="address" rows="2" cols="78%"><?php echo $user['address'] ?></textarea></div>
                     </div>
-                    <div class="modal-row">
+                    <div>
                         <button class="btn-left" type="button">Cancel</button>
                         <button class="btn-right" type="button" id="btn_update">Update</button>
                     </div>
@@ -278,9 +279,9 @@ $user = $data['users'][$_SESSION['user_id']];
                         </select>
                     </div>
                     <div class="modal-row note"> Change your password may force you to logout of every mobile device </div>
-                    <div class="modal-row">
+                    <div>
                         <button class="btn-left" type="button">Cancel</button>
-                        <button class="btn-right" type="button" id="btn_change_password">Update</button>
+                        <button class="btn-right" type="button" id="btn_change_password">Change password</button>
                     </div>
                 </div>
             </div>
@@ -289,32 +290,29 @@ $user = $data['users'][$_SESSION['user_id']];
 
     <div id="confirm_modal" class="modal location-confirm">
         <div class="modal-content confirm">
-            <div class="close">&times;</div>
-            <div>
+            <div class="modal-title"><span class="close">&times;</span></div>
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Exclamation_flat_icon.svg/1200px-Exclamation_flat_icon.svg.png" id="ex_icon">
-            <span> Bạn có muốn đăng xuất khỏi hệ thống ngay bây giờ?</span>
-            </div>
-            <div class="modal-row">
+            <span id="span_text">Bạn có muốn đăng xuất khỏi hệ thống ngay bây giờ?</span>
+            <div>
                 <button class="btn-confirm no" type="button">Close</button>
                 <button class="btn-confirm ok" type="button" id="btn_quit">OK</button>
             </div>
         </div>
     </div>
-    </div>
 
     <div id="info_modal" class="modal location-confirm">
         <div class="modal-content info">
-            <div class="close">&times;</div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/2048px-Flat_tick_icon.svg.png" id="tick_icon">
-            <span id="span_text"></span>
-            <div class="modal-row">
+            <div class="modal-title"><span class="close">&times;</span></div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/2048px-Flat_tick_icon.svg.png" id="info_icon">
+            <span class="span_text"></span>
+            <div>
                 <button class="btn_ok" type="button" id="btn_ok">OK</button>
             </div>
         </div>
     </div>
-    </div>
+    
 
-    <input type="file" id="img_upload" style="display:none" />
+    <input type="file" id="img_upload" style="display:none">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/baseaccount/public/asset/js/common.js"> </script>

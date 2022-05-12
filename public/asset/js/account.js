@@ -1,9 +1,15 @@
 $(function () {
     $("#btn_edit_account, #btn-edit").click(function () {
+        $(".modal-title").css({
+            "padding": "15px 18px"
+        })
         $("#edit_modal").show()
     })
 
     $("#btn_edit_password").click(function () {
+        $(".modal-title").css({
+            "padding": "15px 18px"
+        })
         $("#password_modal").show()
     })
 
@@ -32,13 +38,16 @@ $(function () {
             contentType: false,
             success: function (data) {
                 $("#edit_modal").hide()
-                $("#span_text").text("Update profile successfully")
-                $("#tick_icon").css({
+                $(".span_text").text("Update profile successfully")
+                $("#info_icon").css({
                     "height": "35px",
                     "width": "35px",
                     "margin-left": "6%",
                     "margin-right": "6%",
                     "margin-top": "10%"
+                })
+                $(".modal-title").css({
+                    "padding": "0px 0px"
                 })
                 $("#info_modal").show()
             }
@@ -51,9 +60,13 @@ $(function () {
         var rep_password = $('#rep_password').val();
         var force_logout = $('#force_logout').val();
         if (new_password != rep_password) {
-            alert("PASSWORD MISMATCH")
+            error_popup()
+            $(".span_text").text("PASSWORD.MISMATCH")
+            $("#info_modal").show()
         } else if (!validate_password(new_password)) {
-            alert("INVALID PASSWORD")
+            error_popup()
+            $(".span_text").text("INVALID.PASSWORD")
+            $("#info_modal").show()
         } else {
             $.ajax({
                 url: "/baseaccount/account/user_change_password",
@@ -65,14 +78,14 @@ $(function () {
                 success: function (response) {
                     if (response == 1) {
                         $("#password_modal").hide()
-                        $("#tick_icon").css({
+                        $("#info_icon").css({
                             "height": "35px",
                             "width": "35px",
                             "margin-left": "6%",
                             "margin-right": "6%",
-                            "margin-top": "10%"
+                            "margin-top": "5%"
                         })
-                        $("#span_text").text("Password was updated successfully")
+                        $(".span_text").text("Password was updated successfully")
                         $("#info_modal").show()
                         if (force_logout == 'true') {
                             window.location = "/baseaccount/account/user_logout"
@@ -96,15 +109,14 @@ $(function () {
             "margin-right": "4%",
             "margin-top": "10%"
         })
+        $(".modal-title").css({
+            "padding": "0px 0px"
+        })
         $("#confirm_modal").show()
     })
 
     $("#btn_quit").click(function () {
         window.location = "/baseaccount/account/user_logout";
-    })
-
-    $("#btn_ok").click(function () {
-        location.reload()
     })
 
     $("#avatar_main").click(function () {

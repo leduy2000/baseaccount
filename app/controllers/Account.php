@@ -29,6 +29,8 @@ class Account extends Controller
     }
 
     //TODO: follow convention!!!!!
+    // use camel case for method name
+    // remember ){
     public function user_update()
     {
         session_start();
