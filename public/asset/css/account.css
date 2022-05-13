@@ -221,10 +221,6 @@ b {
     width: fit-content;
 }
 
-
-
-
-
 .location-edit {
     padding-top: 4%;
 }
@@ -232,8 +228,6 @@ b {
 .location-password {
     padding-top: 10%;
 }
-
-
 
 .edit {
     width: 40%;
@@ -252,9 +246,7 @@ b {
     display: block;
 }
 
-.edit input {
-    width: 69%;
-    display: block;
+input, select, textarea {
     border-top: 1px solid #d3d3d3;
     border-right: 1px solid #ccc;
     border-left: 1px solid #d3d3d3;
@@ -265,17 +257,12 @@ b {
     box-sizing: border-box;
 }
 
+.edit input {
+    width: 69%;
+}
+
 .password input {
     width: 55%;
-    display: block;
-    border-top: 1px solid #d3d3d3;
-    border-right: 1px solid #ccc;
-    border-left: 1px solid #d3d3d3;
-    border-bottom: 1px solid #ccc;
-    padding: 6px 8px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 .confirm {
@@ -283,8 +270,9 @@ b {
     height: 140px;
 }
 
-
-
+select {
+    width: 22%;
+}
 
 .modal-wrap {
     padding-top: 5%;
@@ -318,7 +306,7 @@ b {
     color: #666;
 }
 textarea {
-    width: 68%;
+    width: 69%;
     color: -internal-light-dark(black, white);
     letter-spacing: normal;
     word-spacing: normal;
@@ -331,6 +319,14 @@ textarea {
     -webkit-rtl-ordering: logical;
     cursor: text;
     resize: none;
+}
+
+select {
+    padding: 6px 8px;
+    border-top: 1px solid #d3d3d3;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #d3d3d3;
+    border-bottom: 1px solid #ccc;
 }
 
 .btn-confirm {
