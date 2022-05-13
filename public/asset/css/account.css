@@ -243,9 +243,6 @@ b {
     width: 28%;
 }
 
-
-
-
 .modal-label {
     float: left;
     font-weight: 500;
@@ -319,6 +316,21 @@ b {
 .btn-left {
     background-color: #ddd;
     color: #666;
+}
+textarea {
+    width: 68%;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    resize: none;
 }
 
 .btn-confirm {

@@ -1,5 +1,7 @@
 <?php
 
+require_once 'DataFilter.php';
+
 class Account extends Controller
 {
     public $user_model;
@@ -38,12 +40,12 @@ class Account extends Controller
             $info = [];
             $info['ID'] = $_SESSION['user_id'];
             //TODO: sanitize request data
-            $info['first_name'] = $_POST['firstname'];
-            $info['last_name'] = $_POST['lastname'];
-            $info['position'] = $_POST['position'];
+            $info['first_name'] = DataFilter::filter_str($_POST['firstname']);
+            $info['last_name'] = DataFilter::filter_str($_POST['lastname']);
+            $info['position'] = DataFilter::filter_str($_POST['position']);
             $info['avatar'] = $this->process_img();
-            $info['phone_number'] = $_POST['phonenumber'];
-            $info['address'] = $_POST['address'];
+            $info['phone_number'] = DataFilter::filter_str($_POST['phonenumber']);
+            $info['address'] = DataFilter::filter_str($_POST['address']);
             $date = $_POST['date'];
             $month = $_POST['month'];
             $year = $_POST['year'];

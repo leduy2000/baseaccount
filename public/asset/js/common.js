@@ -1,8 +1,15 @@
+var popup_flag = false
+
 function validate_password(password) {
     return password.length >= 6
 }
 
+function empty(str) {
+    return !str.length
+}
+
 function error_popup() {
+    popup_flag = false
     $("#info_icon").css({
         "height": "35px",
         "width": "35px",
@@ -11,9 +18,11 @@ function error_popup() {
         "margin-top": "10%"
     })
     $("#btn_ok").css({"color":"#c65144"})
-    $("#info_icon").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/2048px-Flat_tick_icon.svg.png")
+    $("#info_icon").attr("src", "https://cdn-icons-png.flaticon.com/512/71/71768.png")
 }
 
 $("#btn_ok").click(function () {
     $("#info_modal").hide()
+    if (popup_flag)
+        location.reload()
 })

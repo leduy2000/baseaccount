@@ -1,15 +1,9 @@
 $(function () {
     $("#btn_edit_account, #btn-edit").click(function () {
-        $(".modal-title").css({
-            "padding": "15px 18px"
-        })
         $("#edit_modal").show()
     })
 
     $("#btn_edit_password").click(function () {
-        $(".modal-title").css({
-            "padding": "15px 18px"
-        })
         $("#password_modal").show()
     })
 
@@ -20,35 +14,47 @@ $(function () {
     });
 
     $("#btn_update").click(function () {
-        var form_data = new FormData()
-        form_data.append('firstname', $('#firstname').val())
-        form_data.append('lastname', $('#lastname').val())
-        form_data.append('position', $('#position').val())
-        form_data.append('date', $('#date').val())
-        form_data.append('month', $('#month').val())
-        form_data.append('year', $('#year').val())
-        form_data.append('file_upload', $('#file_upload')[0].files[0])
-        form_data.append('phonenumber', $('#phonenumber').val())
-        form_data.append('address', $('#address').val())
-        $.ajax({
-            url: "/baseaccount/account/user_update",
-            method: "POST",
-            data: form_data,
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                $("#edit_modal").hide()
-                $(".span_text").text("Update profile successfully")
-                $("#info_icon").css({
-                    "height": "35px",
-                    "width": "35px",
-                    "margin-left": "6%",
-                    "margin-right": "6%",
-                    "margin-top": "10%"
-                })
-                $("#info_modal").show()
-            }
-        })
+        if (empty($('#firstname').val())) {
+            error_popup()
+            $(".span_text").text("FIRST_NAME_EMPTY")
+            $("#info_modal").show()
+        } else if (empty($('#lastname').val())) {
+            error_popup()
+            $(".span_text").text("LAST_NAME_EMPTY")
+            $("#info_modal").show()
+        } else {
+            var form_data = new FormData()
+            form_data.append('firstname', $('#firstname').val())
+            form_data.append('lastname', $('#lastname').val())
+            form_data.append('position', $('#position').val())
+            form_data.append('date', $('#date').val())
+            form_data.append('month', $('#month').val())
+            form_data.append('year', $('#year').val())
+            form_data.append('file_upload', $('#file_upload')[0].files[0])
+            form_data.append('phonenumber', $('#phonenumber').val())
+            form_data.append('address', $('#address').val())
+            $.ajax({
+                url: "/baseaccount/account/user_update",
+                method: "POST",
+                data: form_data,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    popup_flag = true
+                    $("#edit_modal").hide()
+                    $(".span_text").text("Update profile successfully")
+                    $("#info_icon").css({
+                        "height": "35px",
+                        "width": "35px",
+                        "margin-left": "6%",
+                        "margin-right": "6%",
+                        "margin-top": "10%"
+                    })
+                    $("#info_modal").show()
+                }
+            })
+        }
+
     })
 
     $("#btn_change_password").click(function () {
@@ -82,8 +88,9 @@ $(function () {
                             "margin-right": "6%",
                             "margin-top": "5%"
                         })
+                        popup_flag = true
                         $(".span_text").text("Password was updated successfully")
-                        $("#info_icon").attr("src", "http://cdn.onlinewebfonts.com/svg/img_28550.png")
+                        $("#info_icon").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/2048px-Flat_tick_icon.svg.png")
                         $("#info_modal").show()
                         if (force_logout == 'true') {
                             window.location = "/baseaccount/account/user_logout"
@@ -91,7 +98,9 @@ $(function () {
                             location.reload()
                         }
                     } else {
-                        alert("WRONG OLD PASSWORD")
+                        error_popup()
+                        $(".span_text").text("WRONG OLD PASSWORD")
+                        $("#info_modal").show()
                     }
                 }
             })

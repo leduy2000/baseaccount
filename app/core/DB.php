@@ -16,7 +16,8 @@ class DB
     public function find_one($model, $col, $value)
     {
         $sql = "select * from $model where $col = '$value'";
-        return $this->execute($sql);
+        $res = $this->execute($sql);
+        return $res->fetch_assoc();
     }
 
     public function get_all($model)

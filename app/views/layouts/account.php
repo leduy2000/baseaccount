@@ -207,7 +207,7 @@ $user = $data['users'][$_SESSION['user_id']];
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Profile image </div>
-                        <div><input type="file" name="file_upload" id="file_upload" style="border:1px solid"></div>
+                        <div><input type="file" name="file_upload" id="file_upload"></div>
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Date of birth </div>
@@ -242,7 +242,7 @@ $user = $data['users'][$_SESSION['user_id']];
                     </div>
                     <div class="modal-row">
                         <div class="modal-label"> Current address </div>
-                        <div><textarea id="address" name="address" id="address" rows="2" cols="78%"><?php echo $user['address'] ?></textarea></div>
+                        <div><textarea id="address" name="address" id="address"><?php echo $user['address'] ?></textarea></div>
                     </div>
                     <div>
                         <button class="btn-left" type="button">Cancel</button>

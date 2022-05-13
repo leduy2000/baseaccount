@@ -1,5 +1,7 @@
 <?php
 
+require_once 'DataFilter.php';
+
 class Login extends Controller
 {
     public $user_model;
@@ -33,11 +35,10 @@ class Login extends Controller
     public function user_login()
     {
         if (isset($_POST['email'])) {
-            $email = $_POST['email'];
+            $email = DataFilter::filter_mail($_POST['email']);
             $password = $_POST['password'];
-            $res = $this->user_model->find_one('user', 'email', $email);
-            if ($res->num_rows) {
-                $user = $res->fetch_assoc();
+            $user = $this->user_model->find_one('user', 'email', $email);
+            if (isset($user)) {
                 if (password_verify($password, $user['password'])) {
                     session_start();
                     $_SESSION['user_id'] = $user['ID'];
